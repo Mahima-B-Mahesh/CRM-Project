@@ -4,15 +4,7 @@ from students.models import BaseClass,DistrictChoices
 
 # Create your models here.
 
-class QualificationChoices(models.TextChoices):
-    
-    UG = 'UG','UG'
-    
-    PG = 'PG','PG'
-    
-    DIPLOMA = 'Diploma','Diploma'
-
-class Trainers(BaseClass):
+class AcademicCounsellors(BaseClass):
     
     profile = models.OneToOneField('authentication.Profile',on_delete=models.CASCADE)
 
@@ -22,7 +14,7 @@ class Trainers(BaseClass):
 
     employee_id = models.CharField(max_length=10)
 
-    photo = models.ImageField(upload_to='trainers')
+    photo = models.ImageField(upload_to='academic-counsellor')
 
     email = models.EmailField()
 
@@ -36,13 +28,11 @@ class Trainers(BaseClass):
 
     pincode = models.CharField(max_length=6)
 
-    qualification = models.CharField(max_length=10,choices=QualificationChoices.choices)
+    qualification = models.CharField(max_length=10)
     
     stream = models.CharField(max_length=25)
 
-    id_card = models.FileField(upload_to='trainers/idproof')
-
-    course = models.ForeignKey('courses.Courses',null=True,on_delete=models.SET_NULL)
+    id_card = models.FileField(upload_to='academic-counsellor/idproof')
 
     def __str__(self):
 
@@ -50,6 +40,6 @@ class Trainers(BaseClass):
     
     class Meta:
 
-        verbose_name = 'Trainers'
+        verbose_name = 'Academic Counsellors'
 
-        verbose_name_plural='Trainers'
+        verbose_name_plural='Academic Counsellors'
