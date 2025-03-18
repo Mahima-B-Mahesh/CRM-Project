@@ -1,13 +1,13 @@
 {%extends 'base.html'%}
-{%block main%}
+{%block section%}
 <main class="h-full pb-16 overflow-y-auto">
     <form action="" method="post" enctype="multipart/form-data">
-        {%csrf_token%}
+      {% csrf_token %}
     <div class="container px-6 mx-auto grid">
       <h2
         class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
       >
-        Register
+       Update Trainer Details
       </h2>
       <!-- CTA -->
       <h4
@@ -21,122 +21,114 @@
         <label class="block text-sm">
           <span class="text-gray-700 dark:text-gray-400">First Name</span><span class="text-red-600">*</span>
           {{form.first_name}}
-          
-          <!-- <input
+          <!-- <input name="first_name"
             type="text"
             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
             placeholder=""
-            name = "firstname"
             required
           /> -->
         </label>
 
         <label class="block text-sm mt-4">
             <span class="text-gray-700 dark:text-gray-400">Last Name</span><span class="text-red-600">*</span>
-            <!-- <input
+            {{form.last_name}}
+            <!-- <input name="last_name"
               type="text"
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder=""
-              name="lastname"
               required
             /> -->
-            {{form.second_name}}
           </label>
-
         <label class="block text-sm mt-4">
             <span class="text-gray-700 dark:text-gray-400">Photo</span><span class="text-red-600">*</span>
-            <!-- <input
+            {{form.photo}}
+            <img src="{{form.instance.photo.url}}" alt="" class="w-56 h-56 rounded-lg  border-4 border-blue-500">
+            <!-- <input name="photo"
               type="file"
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder=""
-              name="photo"
               required
             /> -->
-            {{form.photo}}
           </label>
 
           <label class="block text-sm mt-4">
             <span class="text-gray-700 dark:text-gray-400">Email</span><span class="text-red-600">*</span>
-            <!-- <input
+            {{form.email}}
+            <!-- <input name="email"
               type="email"
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder=""
-              name="email"
               required
             /> -->
-            {{form.email}}
-            {%if form.email.errors%}
-          <span class="text-xs text-red-600 dark:text-red-400">
-            {{form.pincode.errors}}
-          </span>
-          {%endif%}
           </label>
           <label class="block text-sm mt-4">
             <span class="text-gray-700 dark:text-gray-400">Contact Number</span><span class="text-red-600">*</span>
-            <!-- <input
+            {{form.contact_num}}
+            <!-- <input name="contact_num"
               type="text"
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder=""
-              name="contactnumber"
               required
             /> -->
-            {{form.contact}}
           </label>
           <label class="block text-sm mt-4">
             <span class="text-gray-700 dark:text-gray-400">House Name</span><span class="text-red-600">*</span>
-            <!-- <input
+            {{form.house_name}}
+            <!-- <input name="house_name"
               type="text"
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder=""
-              name="housename"
               required
             /> -->
-            {{form.house_name}}
           </label>
           <label class="block text-sm mt-4">
             <span class="text-gray-700 dark:text-gray-400">Post Office</span><span class="text-red-600">*</span>
-            <!-- <input
+            {{form.post_office}}
+            <!-- <input name="post_office"
               type="text"
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder=""
-              name="postoffice"
               required
             /> -->
-            {{form.post_office}}
           </label>
           <label class="block mt-4 text-sm">
             <span class="text-gray-700 dark:text-gray-400">
               District
             </span>
-            <!-- <select
-              class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-              name="district"
-              required
-              >
-            {%for district in districts%}
-            <option value="{{district.value}}">{{district.label}}</option> 
-            {%endfor%} -->
-              
             {{form.district}}
+            <!-- <select name="district"
+            required
+              class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+            >
+            {%for district in districts%}
+              <option value="{{district.value}}">{{district.label}}</option> 
+              {%endfor%}
+
               
-            <!-- </select> -->
+            </select> -->
           </label>
           <label class="block text-sm mt-4">
             <span class="text-gray-700 dark:text-gray-400">Pincode</span><span class="text-red-600">*</span>
-            <!-- <input
+            {{form.pincode}}
+            <!-- <input name="pincode"
               type="text"
               class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
               placeholder=""
-              name="pincode"
               required
             /> -->
-            {{form.pincode}}
           </label>
           {%if form.pincode.errors%}
           <span class="text-xs text-red-600 dark:text-red-400">
             {{form.pincode.errors}}
           </span>
           {%endif%}
+          <label class="block text-sm mt-4">
+            <span class="text-gray-700 dark:text-gray-400">Qualification</span><span class="text-red-600">*</span>
+            {{form.qualification}}
+          </label>
+          <label class="block text-sm mt-4">
+            <span class="text-gray-700 dark:text-gray-400">Stream</span><span class="text-red-600">*</span>
+            {{form.stream}}
         </div>
         <h4
             class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 mt-4"
@@ -146,90 +138,61 @@
           <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
             <label class="block mt-4 text-sm">
               <span class="text-gray-700 dark:text-gray-400">Course</span><span class="text-red-600">*</span>
-              <!-- <select
+              {{form.course}}
+              <!-- <select name="course"
+              required
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                name="course"
-                required
-                >
-                {%for course in courses%}
+              >
+              {%for course in courses%}
                 <option value="{{course.value}}">{{course.label}}</option>
                 {%endfor%}
                 
               </select> -->
-              {{form.course}}
             </label>
             <label class="block mt-4 text-sm">
-              <span class="text-gray-700 dark:text-gray-400">Batch</span><span class="text-red-600">*</span>
-              <!-- <select
+              <span class="text-gray-700 dark:text-gray-400">Id Proof</span><span class="text-red-600">*</span>
+              {{form.id_proof}}
+              <!-- <select name="batch"
+              required
                 class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                name="batch"
-                required
-                >
-                {%for batch in batches%}
+              >
+              {%for batch in batches%}
                 <option value="{{batch.value}}">{{batch.label}}</option>
                 {%endfor%}
+                
               </select> -->
-              {{form.batch}}
             </label>
             <!-- <label class="block text-sm mt-4">
               <span class="text-gray-700 dark:text-gray-400">Batch Date</span><span class="text-red-600">*</span>
-               <input
+              {{form.batch_date}}
+               <input name="batch_date"
                 type="date"
                 class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                 placeholder=""
-                name="batchdate"
                 required
               /> -->
-              <!-- {{form.batch_date}}
-            </label> -->
-            <label class="block mt-4 text-sm">
+            </label> 
+            <!-- <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Trainer</span><span class="text-red-600">*</span>
-                <!-- <select
+                {{form.trainer}}
+                 <select name="trainer"
+                required
                   class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  name="trainer"
-                  required
-                  >
-                  {%for trainer in trainers%}
+                >
+                {%for trainer in trainers%}
                   <option value="{{trainer.value}}">{{trainer.label}}</option>
                   {%endfor%}
                   
-                </select> -->
-                {{form.trainer}}
-              </label>
-              <!-- <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Payment Settlement</span><span class="text-red-600">*</span>
-                {{payment_structure_form.one_time_or_installments}}
-              </label>
-              <label class="block mt-4 text-sm" id="no-of-installments">
-                <span class="text-gray-700 dark:text-gray-400">No of Installments</span><span class="text-red-600">*</span>
-                {{payment_structure_form.no_of_installments}}
+                </select> 
               </label> -->
               <div class="flex items-center justify-end">
                 <button type="submit" class="px-5 py-3 my-6 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                    Register
+                    Update
                   </button>
               </div>
           </div>
     </div>
 </form>
-<!-- <script>
-  function toggleInstallmentsField() {
-    var installmentsField = document.getElementById('no-of-installments');
-    var paymentSelect = document.getElementById('one-time-or-installments');
-    
-    // Check the current value of the dropdown and toggle the field accordingly
-    if (paymentSelect.value === 'Installments') {
-        installmentsField.style.display = 'block';  
-    } else {
-        installmentsField.style.display = 'none';  
-    }
-  }
-  document.getElementById('one-time-or-installments').addEventListener('change', function () {
-    toggleInstallmentsField(); 
-  });
-
-  window.onload = toggleInstallmentsField;
-</script> -->
   </main>
 
 {%endblock%}

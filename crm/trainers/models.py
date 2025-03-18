@@ -2,7 +2,23 @@ from django.db import models
 
 from students.models import BaseClass,DistrictChoices
 
+import uuid
+
 # Create your models here.
+
+class BaseClass(models.Model):
+    
+    uuid = models.SlugField(unique=True,default=uuid.uuid4)
+
+    active_status = models.BooleanField(default=True)
+
+    create_at = models.DateTimeField(auto_now_add=True)
+    
+    update_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        
+        abstract = True
 
 class QualificationChoices(models.TextChoices):
     
@@ -24,7 +40,7 @@ class Trainers(BaseClass):
 
     photo = models.ImageField(upload_to='trainers')
 
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
 
     contact = models.CharField(max_length=12)
 

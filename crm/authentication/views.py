@@ -35,7 +35,7 @@ class LoginView(View):
                 
                 login(request,user)
                 
-                return redirect('dashboard')
+                role=user.role 
             
                 if role in ['Admin','Sales']:
                     
@@ -45,7 +45,7 @@ class LoginView(View):
                     
                     return redirect('students-list')
                 
-                elif role in ['student']:
+                elif role in ['Student']:
                     
                     return redirect('recordings')
             

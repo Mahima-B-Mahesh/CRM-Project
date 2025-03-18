@@ -6,6 +6,16 @@ import string
 
 import random
 
+# email related imports
+
+from django.core.mail import EmailMultiAlternatives
+
+from django.template.loader import render_to_string
+
+from django.conf import settings
+
+
+
 def get_admission_number():
     
     while True:
@@ -29,3 +39,21 @@ def get_password():
     return password
     
 get_password()
+
+def send_email(subject,recepient,template,context):
+    
+    email_obj = EmailMultiAlternatives(subject,from_email=settings.EMAIL_HOST_USER,to=recepient) 
+                
+    content = render_to_string(template,context)
+                
+    email_obj.attach_alternative(content,'text/html')
+    
+    try:   
+    
+        email_obj.send()  
+    
+    except Exception as e:
+                    
+        print(e)            
+        
+        
